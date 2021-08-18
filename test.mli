@@ -50,7 +50,8 @@ type t =
  *)
 val read_test : string -> t option
 
-(** A compiler is a function taking an output channel as a sink to output the result and a source program as a string *)
+(** A compiler is a function that takes a source program as a string, and 
+    an output channel as a sink to output the compiled program  *)
 type compiler = string -> out_channel -> unit
 
 (** [testfiles_in_dir path] collects the content of all thet `*.test` files
@@ -63,8 +64,8 @@ val testfiles_in_dir : string -> string list
     to process the sources.
     [compile_flags] are passed to the C compiler (clang),
     defaulting to "-g".
-    The optional [interpreter] is invoked on source files when the expected result of a test file
-    mentions `|INTERPRET` and should return the expected result. *)
+    The optional [interpreter] parameter is the interpreter function to be invoked on source files 
+    (whenever the expected result of a test file mentions `|INTERPRET`). *)
 val tests_from_dir :
   ?compile_flags:string ->
   runtime:string ->
