@@ -6,16 +6,54 @@ A simple library for black-box testing of compilers from the Compiler Design and
 documentation, release, etc: TBD (very soon!)
 
 ## Dependencies
-- opam (>= 2.0)
+- dune (>= 2.9)
 - ocaml (>= 4.08.0)
 - alcotest (>= 1.2.2)
 - containers (>= 3.0.1)
 
 ## Installation
 
-Assuming a working opam setup, just run the makefile from the top directory
+
+Download the sources as a zip archive, unzip and install the package
 ```bash
+$ unzip BBCTester-main.zip
+Archive:  BBCTester-main.zip
+002d4d44e78e9655eff48580f1820961fd2ec520
+   creating: BBCTester-main/
+  inflating: BBCTester-main/.gitignore  
+  inflating: BBCTester-main/Makefile  
+  inflating: BBCTester-main/README.md  
+  inflating: BBCTester-main/dune     
+  inflating: BBCTester-main/dune-project  
+  inflating: BBCTester-main/test.ml  
+  inflating: BBCTester-main/test.mli
+
+$ cd BBCTester-main
+
 $ make install
+dune build
+dune install         
+Installing ...
+```
+
+Alternatively, you can clone the repository and install
+```bash
+$ git clone https://github.com/pleiad/BBCTester.git
+Cloning into 'BBCTester'...
+remote: Enumerating objects: 19, done.
+remote: Counting objects: 100% (19/19), done.
+remote: Compressing objects: 100% (15/15), done.
+remote: Total 19 (delta 3), reused 12 (delta 3), pack-reused 0
+Receiving objects: 100% (19/19), 7.10 KiB | 7.10 MiB/s, done.
+Resolving deltas: 100% (3/3), done.
+
+$ cd BBCTester
+
+$ make install
+dune build
+dune install         
+Installing ...
+
 ```
 
 
