@@ -130,13 +130,8 @@ let nasm basefile =
 
 
 
-type compiler = Format.formatter -> string -> unit
+type compiler = string -> out_channel -> unit
 
-(* [make_test ~compile_flags runtime ~compiler ~interpreter filename]
-   reads the test file filename and if succesful produces a test
-   that compiles, assemble and link the source of the test to the runtime C file provided,
-   before executing and comparing the result to what's provided in the test file
-*)
 let make_test
     ~compile_flags
     runtime
@@ -152,9 +147,7 @@ let make_test
 
       let res =
         let* () =
-          try
-            let compile oc = compiler (Format.formatter_of_out_channel oc) test.src
-            in Ok (CCIO.with_out (base ^ ".s") compile) (* actually no need to go through a file... *)
+          try Ok (CCIO.with_out (base ^ ".s") (compiler test.src))
           with e -> Error (CTError, Printexc.to_string e)
         in
         let* () = nasm base in
