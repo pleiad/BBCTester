@@ -1,0 +1,4 @@
+(library
+ (name bbctester) ; Black-Box Compiler Tester
+ (public_name bbctester)
+ (libraries str alcotest containers containers.unix))
