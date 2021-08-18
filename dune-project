@@ -2,7 +2,9 @@
 
 
 (name bbctester)
-(generate_opam_files true)
+
+; Not using opam because of not understood bug with generated `dune subst --root`
+; (generate_opam_files true)
 
 (authors "Kenji Maillard")
 (maintainers "kenji@maillard.blue")

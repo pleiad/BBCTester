@@ -1,9 +1,11 @@
-bbctester.opam:
-	dune build @install
+all:
+	dune build
 
-install: bbctester.opam
-	opam install .
+install: all
+	dune install
+
+uninstall: all
+	dune uninstall
 
 clean:
 	dune clean
-	rm bbctester.opam
