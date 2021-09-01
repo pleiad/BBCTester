@@ -179,7 +179,7 @@ let make_test
 
 
 let testfiles_in_dir dir =
-  CCUnix.with_process_in ("find " ^ dir ^ " -name '*.test'") ~f:CCIO.read_lines_l
+  CCUnix.with_process_in ("find " ^ dir ^ " -name '*.bbc'") ~f:CCIO.read_lines_l
 
 let name_from_file filename =
   let open Filename in

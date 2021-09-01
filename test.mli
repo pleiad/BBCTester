@@ -54,7 +54,7 @@ val read_test : string -> t option
     an output channel as a sink to output the compiled program  *)
 type compiler = string -> out_channel -> unit
 
-(** [testfiles_in_dir path] collects the content of all thet `*.test` files
+(** [testfiles_in_dir path] collects the content of all thet `*.bbc` files
     found at [path]; uses `find` (GNU findutils) *)
 val testfiles_in_dir : string -> string list
 

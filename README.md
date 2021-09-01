@@ -1,9 +1,7 @@
 # BBCTester
-Black Box Compiler Tester
+Black-Box Compiler Tester
 
-A simple library for black-box testing of compilers from the Compiler Design and Implementation course at UChile.
-
-documentation, release, etc: TBD (very soon!)
+A simple library for black-box testing of compilers from the [Compiler Design and Implementation course at UChile](https://users.dcc.uchile.cl/~etanter/CC5116/).
 
 ## Dependencies
 - dune (>= 2.9)
@@ -78,9 +76,9 @@ val tests_from_dir :
 ```
 
 
-## Tests files (*.test)
+## Tests files (*.bbc)
 
-A test file contains both a source program to be fed to the compiler and various metadata to help testing the compiler.
+A BBCTester test file contains both a source program to be fed to the compiler and various metadata to help testing the compiler.
 Here is how it looks like:
 ```
 NAME: add1
@@ -94,7 +92,7 @@ EXPECTED:
 ```
 
 
-It uses the extension `.test` and is composed of a few sections that appear in the following order:
+It uses the extension `.bbc` and is composed of a few sections that appear in the following order:
 - `NAME:` [optional, default empty] : the name of the test
 - `DESCRIPTION:` [optional, default empty] : a longer description of the content of the test
 - `PARAMS:` [optional, default empty] : a `,`-separated list of pairs `VAR=VAL` that are added to the environment variables of the compiled executable
