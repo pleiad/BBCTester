@@ -64,11 +64,12 @@ val testfiles_in_dir : string -> string list
     to process the sources.
     [compile_flags] are passed to the C compiler (clang),
     defaulting to "-g".
-    The optional [interpreter] parameter is the interpreter function to be invoked on source files 
-    (whenever the expected result of a test file mentions `|INTERPRET`). *)
+    The optional [oracle] parameter is an interpreter oracle to be invoked on source files.
+    It should return a result status together with the expected output of the corresponding program,
+    that will be substituted in the first mention of `|ORACLE` in a test file, if any. *)
 val tests_from_dir :
   ?compile_flags:string ->
   runtime:string ->
   compiler:compiler ->
-  ?interpreter:(string -> string) ->
+  ?oracle:(string -> status * string) ->
   string -> (string * unit Alcotest.test_case list) list

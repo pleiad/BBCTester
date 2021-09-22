@@ -136,7 +136,7 @@ let make_test
     ~compile_flags
     runtime
     ~(compiler:compiler)
-    ~interpreter
+    ~oracle
     filename =
   match read_test filename with
   | None -> Alcotest.failf "Could not open or parse test %s" filename
@@ -164,10 +164,12 @@ let make_test
       in
 
       let expected =
-        let i_interpret = CCString.find ~sub:"|INTERPRET" test.expected in
-        match interpreter with
-        | Some interp when test.status = NoError && i_interpret <> -1 ->
-          NoError, CCString.sub test.expected 0 (max (i_interpret - 1) 0) ^ interp test.src
+        let i_oracle = CCString.find ~sub:"|ORACLE" test.expected in
+        match oracle with
+        | Some interp when test.status = NoError && i_oracle <> -1 ->
+          let prefix = CCString.sub test.expected 0 (max (i_oracle - 1) 0) in
+          let status , output = interp test.src in
+          status , prefix ^ output
         | _ -> test.status, test.expected
       in
 
@@ -185,10 +187,10 @@ let name_from_file filename =
   let open Filename in
   dirname filename ^ "::" ^ basename (chop_extension filename)
 
-let tests_from_dir ?(compile_flags="-g") ~runtime ~compiler ?interpreter dir =
+let tests_from_dir ?(compile_flags="-g") ~runtime ~compiler ?oracle dir =
   let open Alcotest in
   let to_test testfile =
-    let testname, exec_test = make_test ~compile_flags runtime ~compiler ~interpreter testfile in
+    let testname, exec_test = make_test ~compile_flags runtime ~compiler ~oracle testfile in
     name_from_file testfile, [test_case testname `Quick exec_test]
   in
   List.map to_test @@ testfiles_in_dir dir
