@@ -64,7 +64,7 @@ val testfiles_in_dir : string -> string list
     to process the sources.
     [compile_flags] are passed to the C compiler (clang),
     defaulting to "-g".
-    The optional [oracle] parameter is an interpreter oracle to be invoked on source files.
+    The optional [oracle] parameter is an oracle (eg. an interpreter, reference compiler) to be invoked on source files.
     It should return a result status together with the expected output of the corresponding program,
     that will be substituted in the first mention of `|ORACLE` in a test file, if any. *)
 val tests_from_dir :
