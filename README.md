@@ -4,27 +4,35 @@ Black-Box Compiler Tester
 A simple library for black-box testing of compilers from the [Compiler Design and Implementation course at UChile](https://users.dcc.uchile.cl/~etanter/CC5116/).
 
 ## Dependencies
-- dune (>= 2.9)
+- dune (>= 3.10)
 - ocaml (>= 4.08.0)
 - alcotest (>= 1.2.2)
 - containers (>= 3.0.1)
 
-## Installation
 
+## Installation
 
 Download the sources as a zip archive, unzip and install the package
 ```bash
 $ unzip BBCTester-main.zip
 Archive:  BBCTester-main.zip
-002d4d44e78e9655eff48580f1820961fd2ec520
+0e3ce14f8587aafdcc6f64c07de0c2e3c2fde838
    creating: BBCTester-main/
   inflating: BBCTester-main/.gitignore  
   inflating: BBCTester-main/Makefile  
   inflating: BBCTester-main/README.md  
-  inflating: BBCTester-main/dune     
+  inflating: BBCTester-main/dune  
   inflating: BBCTester-main/dune-project  
+  inflating: BBCTester-main/main.ml  
+  inflating: BBCTester-main/main.mli  
+  inflating: BBCTester-main/pipeline.ml  
+  inflating: BBCTester-main/runtime.ml  
   inflating: BBCTester-main/test.ml  
-  inflating: BBCTester-main/test.mli
+  inflating: BBCTester-main/test.mli  
+  inflating: BBCTester-main/testeable.ml  
+  inflating: BBCTester-main/type.ml  
+  inflating: BBCTester-main/type.mli  
+  inflating: BBCTester-main/util.ml
 
 $ cd BBCTester-main
 
@@ -38,12 +46,12 @@ Alternatively, you can clone the repository and install
 ```bash
 $ git clone https://github.com/pleiad/BBCTester.git
 Cloning into 'BBCTester'...
-remote: Enumerating objects: 19, done.
-remote: Counting objects: 100% (19/19), done.
-remote: Compressing objects: 100% (15/15), done.
-remote: Total 19 (delta 3), reused 12 (delta 3), pack-reused 0
-Receiving objects: 100% (19/19), 7.10 KiB | 7.10 MiB/s, done.
-Resolving deltas: 100% (3/3), done.
+remote: Enumerating objects: 81, done.
+remote: Counting objects: 100% (81/81), done.
+remote: Compressing objects: 100% (55/55), done.
+remote: Total 81 (delta 48), reused 51 (delta 25), pack-reused 0
+Receiving objects: 100% (81/81), 17.79 KiB | 17.79 MiB/s, done.
+Resolving deltas: 100% (48/48), done.
 
 $ cd BBCTester
 
